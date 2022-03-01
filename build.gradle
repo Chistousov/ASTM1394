@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+
+	id 'jacoco'
+    
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.github.chistousov.lib.astm1394'
+version = '0.1.0'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test 
+    reports {
+        xml.required = true
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+bootJar {
+	enabled = false
+
+}
+
+jar {
+	from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+	duplicatesStrategy = 'exclude'
+    manifest {
+        attributes('Implementation-Title': project.name,
+                   'Implementation-Version': project.version,
+				   'Class-Path': '.'
+				   )
+    }
+}
