@@ -6,7 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import com.github.chistousov.lib.astm1394.centaurxp.IWithCommentsCentaurXP;
@@ -35,12 +35,12 @@ class MessageTest {
 
 	private static Stream<String> requestCentaurXPProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "CentaurXP", "requests")
+								Paths.get("src", "test", "resources", "CentaurXP", "requests")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}
@@ -50,12 +50,12 @@ class MessageTest {
 
 	private static Stream<String> ordersCentaurXPProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "CentaurXP", "orders")
+								Paths.get("src", "test", "resources", "CentaurXP", "orders")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}
@@ -65,12 +65,12 @@ class MessageTest {
 
 	private static Stream<String> resultsCentaurXPProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "CentaurXP", "results")
+								Paths.get("src", "test", "resources", "CentaurXP", "results")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}
@@ -211,12 +211,12 @@ class MessageTest {
 
 	private static Stream<String> requestUniCellDxHProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "UniCellDxH", "requests")
+								Paths.get("src", "test", "resources", "UniCellDxH", "requests")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}
@@ -226,12 +226,12 @@ class MessageTest {
 
 	private static Stream<String> ordersUniCellDxHProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "UniCellDxH", "orders")
+								Paths.get("src", "test", "resources", "UniCellDxH", "orders")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}
@@ -241,12 +241,12 @@ class MessageTest {
 
 	private static Stream<String> resultsUniCellDxHProvider() throws Exception{	
 		return Stream.of(Files.walk(
-								Path.of("src", "test", "resources", "UniCellDxH", "results")
+								Paths.get("src", "test", "resources", "UniCellDxH", "results")
 							)
 							.filter(Files::isRegularFile)
 					.map(file -> {
 							try {
-								return Files.readString(file);
+								return new String(Files.readAllBytes(file), "UTF-8");
 							} catch (IOException e) {
 								return file.toString();
 							}

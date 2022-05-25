@@ -5,10 +5,9 @@ plugins {
 	id 'jacoco'
     
     id 'java-library'
-    id 'maven-publish'
 }
 
-group = 'com.github.chistousov.lib.astm1394'
+group = 'com.github.chistousov.lib'
 version = '0.1.0'
 sourceCompatibility = '1.8'
 
